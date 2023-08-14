@@ -9,7 +9,7 @@ export const getNews = () => {
 
   const load = async () => {
     try {
-      const data = await fetch('http://flems.github.io/test/api/news')
+      const data = await fetch('https://flems.github.io/test/api/news')
       if (!data.ok) {
         throw new Error('Something wrong wit the news request')
       }
@@ -22,7 +22,7 @@ export const getNews = () => {
 
   const loadMore = async (pageNum) => {
     try {
-      const data = await fetch(`http://flems.github.io/test/api/news/${pageNum}`)
+      const data = await fetch(`https://flems.github.io/test/api/news/${pageNum}`)
       if (!data.ok) {
         throw new Error('Something wrong with the news request')
       }
