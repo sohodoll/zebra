@@ -2,7 +2,7 @@
   <Intro />
   <div class="newsWrapper">
     <div v-if="news" class="newsGrid">
-      <NewsCard v-for="item in currentNews" :key="item.code" :news="item" />
+      <NewsCard class="newsCard" v-for="item in currentNews" :key="item.code" :news="item" />
     </div>
     <div v-if="showMore" class="showMore">
       <button class="loadMoreButton" @click="handleShowMore">Загрузить еще</button>
@@ -64,6 +64,16 @@ export default {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 60px;
+}
+
+.newsGrid .newsCard:nth-child(-n + 3) {
+  grid-row: span 1;
+  height: auto;
+}
+
+.newsGrid .newsCard:nth-child(n + 4) {
+  grid-row: span 1;
+  min-height: 640px;
 }
 
 .showMore {
