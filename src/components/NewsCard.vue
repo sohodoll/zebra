@@ -42,6 +42,7 @@ export default {
 </script>
 <style>
 .card {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   border-radius: 16px;

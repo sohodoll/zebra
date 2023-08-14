@@ -14,7 +14,7 @@
 import getNews from '../composables/getNews'
 import Intro from '../components/Intro.vue'
 import NewsCard from '../components/NewsCard.vue'
-import { onUpdated, ref } from 'vue'
+import { onUpdated } from 'vue'
 
 export default {
   name: 'News',
@@ -23,10 +23,7 @@ export default {
     NewsCard,
   },
   setup() {
-    const { news, error, load, loadMore } = getNews()
-    const currentNews = ref(null)
-    const currentPage = ref(1)
-    const showMore = ref(false)
+    const { news, error, load, loadMore, currentNews, currentPage, showMore } = getNews()
 
     load()
 

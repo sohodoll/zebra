@@ -2,8 +2,10 @@ import { ref } from 'vue'
 
 export const getNews = () => {
   const news = ref([])
-  const newNews = ref([])
   const error = ref(null)
+  const currentNews = ref(null)
+  const currentPage = ref(1)
+  const showMore = ref(false)
 
   const load = async () => {
     try {
@@ -19,15 +21,14 @@ export const getNews = () => {
   }
 
   const loadMore = async (pageNum) => {
-    console.log(pageNum)
     try {
       const data = await fetch(`http://flems.github.io/test/api/news/${pageNum}`)
       if (!data.ok) {
         throw new Error('Something wrong with the news request')
       }
 
-      newNews.value = await data.json()
-      news.value.items.push(...newNews.value.items)
+      currentNews.value = await data.json()
+      news.value.items.push(...currentNews.value.items)
     } catch (e) {
       console.error(e)
     }
@@ -38,6 +39,9 @@ export const getNews = () => {
     error,
     load,
     loadMore,
+    currentNews,
+    currentPage,
+    showMore,
   }
 }
 
